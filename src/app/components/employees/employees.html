@@ -868,7 +868,7 @@
               class="detail-item full-width mb-3"
               *ngIf="employeeDetails?.contractDiscounts?.length"
             >
-              <h6 class="section-title text-warning">خصومات التعاقدات</h6>
+              <h6 class="section-title text-warning">مرتب شيفت فرع آخر</h6>
               <p-table
                 [value]="employeeDetails.contractDiscounts"
                 responsiveLayout="scroll"
@@ -878,7 +878,7 @@
                   <tr>
                     <th>القيمة</th>
                     <th>السبب</th>
-                    <th>ملاحظات</th>
+                    <th>الفرع</th>
                     <th>التاريخ</th>
                     <th>الإجراءات</th>
                   </tr>
@@ -1036,7 +1036,10 @@
               </div>
               <div class="detail-item">
                 <label>إجمالى السف المرحلة</label
-                ><span>{{ employeeDetails.totalInstallmentBorrow  || '-' }} جنية</span>
+                ><span
+                  >{{ employeeDetails.totalInstallmentBorrow | number:'1.0-2' }}
+                  جنية</span
+                >
               </div>
               <div class="detail-item">
                 <label class="fs-5 text-center">صافى المرتب</label>
@@ -1102,7 +1105,7 @@
                   [(ngModel)]="employeeDetails.holidayHours"
                 />
               </div>
-                <div class="detail-item">
+              <div class="detail-item">
                 <label>أيام الأجازات السنوية</label>
                 <input
                   type="number"
@@ -1654,7 +1657,7 @@
       <!-- نوع القيمة (فقط للخصم والزيادة) -->
       <div
         class="field"
-        *ngIf="currentActionType === 'discount' || currentActionType === 'bonus' || currentActionType === 'contract'"
+        *ngIf="currentActionType === 'discount' || currentActionType === 'bonus'"
       >
         <label class="fw-light">نوع القيمة</label>
         <select
@@ -1748,8 +1751,23 @@
       </div>
 
       <div class="field">
-        <label>ملاحظات</label>
+        <label
+          >{{ currentActionType === 'contract' ? 'الفرع' : 'ملاحظات' }}</label
+        >
+
+        <select
+          *ngIf="currentActionType === 'contract'"
+          class="custom-input"
+          [(ngModel)]="actionForm.notes"
+        >
+          <option value="">اختر الفرع</option>
+          <option *ngFor="let branch of branches" [value]="branch.name">
+            {{ branch.name }}
+          </option>
+        </select>
+
         <textarea
+          *ngIf="currentActionType !== 'contract'"
           rows="2"
           class="custom-input"
           [(ngModel)]="actionForm.notes"
@@ -1758,30 +1776,14 @@
     </div>
 
     <div class="form">
-      <button
-        type="button"
-        [disabled]="
-    actionLoading ||
-    !actionForm.amount ||
-    !actionForm.reasonOfDiscount ||
-    !actionForm.notes"
-        class="submit-btn full my-2"
-        (click)="saveAction()"
-      >
-{{
-  actionLoading
-    ? 'جارى الحفظ...'
-    : currentActionType === 'bonus'
-    ? 'إضافة زيادة'
-    : currentActionType === 'installmentBorrow'
-    ? 'إضافة سلفة مرحلة'
-    : currentActionType === 'discount'
-    ? 'إضافة خصم'
-    : currentActionType === 'contract'
-    ? 'إضافة خصم تعاقد'
-    : 'إضافة سلفة نقدية'
-}}
-      </button>
+<button
+  type="button"
+  [disabled]="actionLoading || !actionForm.amount || !actionForm.reasonOfDiscount || !actionForm.notes"
+  class="submit-btn full my-2"
+  (click)="saveAction()"
+>
+  {{ actionLoading ? 'جارى الحفظ...' : (currentActionType === 'bonus' ? 'إضافة زيادة' : currentActionType === 'installmentBorrow' ? 'إضافة سلفة مرحلة' : currentActionType === 'discount' ? 'إضافة خصم' : currentActionType === 'contract' ? 'إضافة شيفت فرع آخر' : 'إضافة سلفة نقدية') }}
+</button>
     </div>
   </div>
   <!-- إضافة عهدة -->
