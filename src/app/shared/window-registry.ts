@@ -1,0 +1,38 @@
+import { Type } from "@angular/core";
+import { CalendarComponent } from "../components/calendar/calendar.component";
+import { Reports } from "../components/reports/reports";
+import { Users } from "../components/users/users";
+import { Employees } from "../components/employees/employees";
+import { Branches } from "../components/branches/branches";
+import { Criteria } from "../components/criteria/criteria";
+import { Banks } from "../components/banks/banks";
+import { Orders } from "../components/orders-component/orders/orders";
+import { Complaint } from "../components/complaint/complaint";
+import { Responsibility } from "../components/responsibility/responsibility";
+import { MyShift } from "../components/my-shift/my-shift";
+import { WebsiteComponent } from "./components/website/website.component";
+import { News } from "../components/news/news";
+import { NewsDetails } from "../components/news-details/news-details";
+import {Logs} from "../components/logs/logs";
+import { MyDetails } from "../components/my-details/my-details";
+import { Ads } from "../components/ads/ads";
+
+export const WINDOW_REGISTRY: Record<string, Type<any>> = {
+  calendar: CalendarComponent,
+  users: Users,
+  branches: Branches,
+  employees:Employees,
+  reports: Reports,
+  criteria:Criteria,
+  banks:Banks,
+  orders:Orders,
+  complaints:Complaint,
+  responsibility:Responsibility,
+  myshift:MyShift,
+  website: WebsiteComponent,
+  news:News,
+  newsdetails:NewsDetails,
+  logs:Logs,
+  mydetails:MyDetails,
+  ads:Ads,
+};

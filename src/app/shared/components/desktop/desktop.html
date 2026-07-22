@@ -1,0 +1,132 @@
+<div class="desktop" [class.dark]="isDark">
+  <div class="desktop__surface">
+    <div class="d-flex align-items-center justify-content-between gap-2">
+      <div class="d-flex flex-column align-items-start gap-1">
+        <!-- <h3 class="desktop__greeting m-0">أهلا و سهلاً بك يا {{ userName }}</h3> -->
+
+        <fieldset
+          class="shift-fieldset d-flex align-items-center justify-content-center"
+        >
+          <legend>
+            <h3 class="desktop__greeting m-0">
+              أهلا و سهلاً بك يا {{ userName }}
+            </h3>
+          </legend>
+
+          <div class="shift-buttons" *ngIf="isEmployee">
+            <p-button
+              [pt]="{ root: { style: 'padding: 0.3rem 0.3rem ; border-radius : 30px ; font-size: 22px'} }"
+              label="بدء الشيفت"
+              severity="success"
+              [loading]="loadingStart"
+              (onClick)="onStartShift()"
+            />
+            <div *ngIf="shiftStarted" class="shift-counter">
+              <i class="pi pi-clock"></i>
+              {{ formattedTime }}
+            </div>
+            <p-button
+              [pt]="{ root: { style: 'padding: 0.3rem 0.3rem ; border-radius : 30px ; font-size: 22px' } }"
+              label="إنهاء الشيفت"
+              severity="danger"
+              [loading]="loadingEnd"
+              (onClick)="onEndShift()"
+            />
+          </div>
+
+          <div *ngIf="isHR" class="mini-stats">
+            <div class="mini-stat">
+              <span>{{ unseenCounts.forgotHours }}</span>
+              <p class="mb-0">الساعات</p>
+            </div>
+
+            <div class="mini-stat">
+              <span>{{ unseenCounts.holidays }}</span>
+              <p class="mb-0">الأجازات</p>
+            </div>
+
+            <div class="mini-stat">
+              <span>{{ unseenCounts.borrows }}</span>
+              <p class="mb-0">السلف</p>
+            </div>
+
+            <div class="mini-stat">
+              <span>{{ unseenCounts.overtime }}</span>
+              <p class="mb-0">الأوفر تايم</p>
+            </div>
+
+            <div class="mini-stat">
+              <span>{{ unseenCounts.resignations }}</span>
+              <p class="mb-0">إستقالات</p>
+            </div>
+
+            <div class="mini-stat">
+              <span>{{ unseenCounts.appointments }}</span>
+              <p class="mb-0">التعيينات</p>
+            </div>
+
+            <div class="mini-stat">
+              <span>{{ unseenCounts.complaints }}</span>
+              <p class="mb-0">الشكاوى</p>
+            </div>
+          </div>
+
+          <div *ngIf="isAreaManager" class="manager-branches">
+            <div class="d-flex flex-wrap gap-2">
+              <span *ngFor="let branch of managerBranches" class="mini-stat">
+                <p class="mb-0">{{ branch }}</p>
+              </span>
+            </div>
+          </div>
+
+          <div *ngIf="isAdmin" class="mini-stats">
+            <div class="mini-stat">
+              <span>{{ this.totalUsers }}</span>
+              <p class="mb-0">إجمالى المستخدمين</p>
+            </div>
+
+            <div class="mini-stat">
+              <span>{{ this.totalBranchs }}</span>
+              <p class="mb-0">إجمالى الفروع</p>
+            </div>
+
+
+
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="Logo">
+        <img src="/photos/alfath.png" alt="Logo" />
+      </div>
+    </div>
+    <app-shortcuts
+      style="
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+      "
+      (shortcutClick)="openShortcut($event)"
+    ></app-shortcuts>
+
+    @for (window of windows; track trackByWindowId($index, window)) {
+    <app-window
+      [window]="window"
+      (activate)="activateWindow($event)"
+      (minimize)="minimizeWindow($event)"
+      (maximize)="toggleMaximize($event)"
+      (close)="closeWindow($event)"
+      (startDrag)="startDrag($event)"
+    ></app-window>
+    }
+  </div>
+
+  <app-taskbar
+    [windows]="windows"
+    [isDark]="isDark"
+    (taskClick)="toggleTask($event)"
+    (themeChange)="handleThemeChange($event)"
+    (websiteClick)="openWebsiteWindow()"
+  ></app-taskbar>
+</div>

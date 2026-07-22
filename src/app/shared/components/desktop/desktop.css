@@ -1,0 +1,178 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.desktop {
+  --bg-start: #eff5ff;
+  --bg-end: #c8d8f0;
+  --surface: rgba(255, 255, 255, 0.6);
+  --surface-strong: rgba(255, 255, 255, 1);
+  --surface-border: rgba(190, 190, 190, 0.4);
+  --text: #172033;
+  --text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  --text-soft: #50607a;
+  /* --shadow: 0 22px 45px rgba(35, 56, 95, 0.18); */
+  --taskbar: rgba(236, 242, 251, 0.75);
+  --taskbar-border: rgba(255, 255, 255, 0.44);
+  --accent: #92bbfd;
+  --hover: rgba(236, 236, 236, 0.474);
+  --danger: #f45454;
+  position: relative;
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    url("/photos/bg.png") no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  --shortcut-bg: rgba(236, 242, 251, 0.75);
+  --shortcut-shadow:
+    0 6px 12px rgba(0, 0, 0, 0.1),
+    0 12px 30px rgba(0, 0, 0, 0.15);
+  /* background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.85), transparent 30%),
+    linear-gradient(135deg, var(--bg-start), var(--bg-end)); */
+  direction: rtl;
+}
+
+
+
+.desktop.dark {
+  --bg-start: #0a1322;
+  --bg-end: #162235;
+  --surface: rgba(17, 25, 39, 0.55);
+  --surface-strong: rgba(15, 23, 38, 1);
+  --surface-border: rgb(192, 192, 192);
+  --text: #eef3ff;
+  --text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  --shortcut-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.5),
+    0 16px 40px rgba(254, 254, 254, 0.6);
+  --text-soft: #a9b6cc;
+  --shadow: 0 22px 45px rgba(0, 0, 0, 0.35);
+  --taskbar: rgba(10, 16, 28, 0.8);
+  --taskbar-border: rgba(255, 255, 255, 0.08);
+  --accent: #92bbfd;
+  --shortcut-bg: rgba(30, 30, 30, 0.6);
+
+}
+
+.desktop__greeting {
+  text-shadow: var(--text-shadow);
+}
+
+.desktop__surface {
+  position: relative;
+  min-height: calc(100vh - 82px);
+  padding: 20px 20px;
+  overflow: hidden;
+}
+
+.Logo {
+  /* position: absolute;
+  bottom: 0px;
+  left: 0px; */
+  /* width: 200px; */
+  filter: drop-shadow(0 6px 12px rgb(255, 255, 255));
+
+}
+
+.Logo img {
+  width: 200px;
+}
+
+@media (max-width: 900px) {
+  .desktop__surface {
+    padding: 5px;
+  }
+}
+
+.shift-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* زرار بدء الشيفت لما يكون disabled */
+.shift-actions .p-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.shift-fieldset {
+  border: 3px solid var(--text);
+  border-radius: 30px;
+  padding: 0.4rem 0.75rem 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  legend {
+    font-size: 0.75rem;
+    color: var(--text);
+    padding: 0 0.0rem;
+    float: none;
+    justify-self: center;
+    width: auto;
+    background: var(--surface);
+    border: 1px solid var(--text);
+    border-radius: 20px;
+    padding: 0.3rem 0.3rem;
+    margin-bottom: .0rem !important;
+
+  }
+}
+
+
+
+.shift-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.shift-counter {
+  padding: 0.4rem 0.8rem;
+  background: var(--shortcut-bg);
+  color: var(--text);
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+
+.mini-stats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mini-stat {
+  min-width: 85px;
+  padding: 8px 12px;
+  background: var(--surface);
+  border: 1px solid var(--text);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .05);
+}
+
+.mini-stat span {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary-color);
+  line-height: 1;
+}
+
+.mini-stat p {
+  display: block;
+  margin-top: 4px;
+  font-size: 18px;
+  color: var(--text-color-secondary);
+}
+

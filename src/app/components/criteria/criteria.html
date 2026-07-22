@@ -1,0 +1,77 @@
+<div class="sticky-header">
+  <button
+    pButton
+    type="button"
+    class="btn btn-sm mx-1 my-1 d-flex align-items-center justify-content-center gap-2"
+    [class.btn-success]="!showCreateCriteria"
+    [class.btn-danger]="showCreateCriteria"
+    (click)="showCreateCriteria = !showCreateCriteria"
+  >
+    <i
+      class="pi"
+      [ngClass]="showCreateCriteria ? 'pi-times' : 'pi-list-check'"
+    ></i>
+
+    {{ showCreateCriteria ? '' : 'بند جديد' }}
+  </button>
+</div>
+
+<!-- CREATE CRITERIA -->
+<app-create-criteria *ngIf="showCreateCriteria" (created)="onCriteriaCreated()">
+</app-create-criteria>
+
+<!-- TABLE -->
+<p-table
+  *ngIf="!showCreateCriteria"
+  [value]="Criteria"
+  [paginator]="true"
+  [rows]="pageSize"
+  [rowsPerPageOptions]="[5,10,20]"
+  [loading]="loading"
+  [responsiveLayout]="'scroll'"
+  [paginatorDropdownAppendTo]="'body'"
+  dataKey="id"
+  dir="rtl"
+  styleClass="p-datatable-sm p-datatable-gridlines"
+
+>
+  <!-- HEADER -->
+  <ng-template pTemplate="header">
+    <tr>
+      <th>#</th>
+      <th>اسم البند</th>
+      <th>الإجراءات</th>
+    </tr>
+  </ng-template>
+
+  <!-- BODY -->
+  <ng-template pTemplate="body" let-criterion let-ri="rowIndex">
+    <tr>
+      <!-- Row Number -->
+      <td>{{ criterion.id }}</td>
+
+      <!-- Criterion Name -->
+      <td>{{ criterion.name }}</td>
+
+      <!-- Actions -->
+      <td>
+        <!-- Delete -->
+        <button
+          pButton
+          type="button"
+          class="btn btn-sm btn-danger mx-1 my-1 rounded-circle"
+          (click)="confirmDelete(criterion)"
+        >
+          <i
+            class="pi pi-trash d-flex align-items-center justify-content-center"
+          ></i>
+        </button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="3" class="text-center py-4">لاتوجد أى بيانات</td>
+    </tr>
+  </ng-template>
+</p-table>

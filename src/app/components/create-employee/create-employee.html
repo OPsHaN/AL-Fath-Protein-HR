@@ -1,0 +1,295 @@
+<div class="panel">
+  <form [formGroup]="form" (ngSubmit)="Submit()">
+    <div class="form grid-form">
+      <!-- Username -->
+      <div class="field">
+        <label>
+          اسم المستخدم
+          <span class="required text-danger" *ngIf="isRequired('username')"
+            >*</span
+          >
+        </label>
+        <input type="text" formControlName="username" />
+      </div>
+
+      <!-- Password -->
+      <div class="field password-field">
+        <label>
+          كلمة المرور
+          <span class="required text-danger" *ngIf="isRequired('password')"
+            >*</span
+          >
+        </label>
+
+        <div class="input-wrapper">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="كلمة المرور"
+          />
+
+          <i
+            class="pi my-auto"
+            [ngClass]="showPassword ? 'pi-eye-slash' : 'pi-eye'"
+            (click)="togglePassword()"
+          ></i>
+        </div>
+      </div>
+
+      <!-- Name -->
+      <div class="field">
+        <label>
+          الاسم الكامل
+          <span class="required text-danger" *ngIf="isRequired('name')">*</span>
+        </label>
+        <input type="text" formControlName="name" />
+      </div>
+
+      <!-- Role -->
+      <div class="field">
+        <label>
+          الدور الوظيفي
+          <span class="required text-danger" *ngIf="isRequired('role')">*</span>
+        </label>
+
+        <select formControlName="role">
+          <option value="">اختر الدور</option>
+          <option value="static">ثابت</option>
+          <option value="changable">متغير</option>
+          <option value="delivery">دليفرى</option>
+        </select>
+      </div>
+
+      <!-- Job Name -->
+      <div class="field">
+        <label>
+          المسمى الوظيفى
+          <span class="required text-danger" *ngIf="isRequired('theNameOfJob')"
+            >*</span
+          >
+        </label>
+        <select formControlName="theNameOfJob">
+          <option value="">اختر المسمى الوظيفي</option>
+          <option value="شيف تلاجة">شيف تلاجة</option>
+          <option value="مساعد شيف تلاجة">مساعد شيف تلاجة</option>
+          <option value="شيف معمل">شيف معمل</option>
+          <option value="مساعد شيف معمل">مساعد شيف معمل</option>
+          <option value="شيف منتجات البان">شيف منتجات البان</option>
+          <option value="مساعد شيف منتجات البان">مساعد شيف منتجات البان</option>
+          <option value="منسق صالة">منسق صالة</option>
+          <option value="مندوب تذوق">مندوب تذوق</option>
+          <option value="عمال انتاج">عمال انتاج</option>
+          <option value="كاشير">كاشير</option>
+          <option value="كول سنتر">كول سنتر</option>
+          <option value="مدير فرع">مدير فرع</option>
+          <option value="مدير حسابات">مدير حسابات</option>
+          <option value="حسابات">حسابات</option>
+          <option value="مدير تشغيل">مدير تشغيل</option>
+          <option value="موارد بشرية">موارد بشرية</option>
+        </select>
+      </div>
+
+      <!-- Bank Id -->
+      <div class="field">
+        <label>
+          اسم البنك
+          <span class="required text-danger" *ngIf="isRequired('bankId')"
+            >*</span
+          >
+        </label>
+        <select formControlName="bankId">
+          <option [ngValue]="null">اختر البنك</option>
+          <option *ngFor="let bank of banks" [ngValue]="bank.id">
+            {{ bank.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Bank Account -->
+      <div class="field">
+        <label>
+          رقم الحساب البنكي
+          <span class="required text-danger" *ngIf="isRequired('bankAccount')"
+            >*</span
+          >
+        </label>
+        <input type="text" formControlName="bankAccount" />
+      </div>
+
+      <!-- Shift Hours -->
+      <div class="field">
+        <label>
+          عدد ساعات الشيفت
+          <span class="required text-danger" *ngIf="isRequired('shiftHours')"
+            >*</span
+          >
+        </label>
+        <input type="number" formControlName="shiftHours" />
+      </div>
+
+      <!-- Branch Id -->
+      <div class="field">
+        <label>
+          الفرع
+          <span class="required text-danger" *ngIf="isRequired('branchId')"
+            >*</span
+          >
+        </label>
+
+        <select formControlName="branchId">
+          <option [ngValue]="null">اختر الفرع</option>
+          <option *ngFor="let branch of branches" [ngValue]="branch.id">
+            {{ branch.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Hiring Date -->
+      <div class="field">
+        <label>
+          تاريخ التعيين
+          <span class="required text-danger" *ngIf="isRequired('hiringDate')">
+            *
+          </span>
+        </label>
+
+        <p-datepicker
+          formControlName="hiringDate"
+          dateFormat="yy-mm-dd"
+          [showIcon]="false"
+          inputId="hiringDate"
+          appendTo="body"
+          placeholder="اختر التاريخ"
+          styleClass="w-100"
+        ></p-datepicker>
+      </div>
+
+      <!-- Qualification -->
+      <div class="field">
+        <label>
+          المؤهل الدراسي
+          <span class="required text-danger" *ngIf="isRequired('qualification')"
+            >*</span
+          >
+        </label>
+        <input type="text" formControlName="qualification" />
+      </div>
+
+      <!-- Graduation Year -->
+      <div class="field">
+        <label>
+          سنة التخرج
+          <span
+            class="required text-danger"
+            *ngIf="isRequired('graduationYear')"
+            >*</span
+          >
+        </label>
+        <input type="number" formControlName="graduationYear" />
+      </div>
+
+      <!-- National ID -->
+      <div class="field">
+        <label>
+          الرقم القومي
+          <span class="required text-danger" *ngIf="isRequired('nationalId')"
+            >*</span
+          >
+        </label>
+        <input
+          type="text"
+          formControlName="nationalId"
+          maxlength="14"
+          inputmode="numeric"
+          pattern="[0-9]*"
+          (input)="onNationalIdInput($event)"
+        />
+        <div
+          class="text-danger"
+          *ngIf="form.get('nationalId')?.invalid && form.get('nationalId')?.touched"
+        >
+          الرقم القومي لازم يكون 14 رقم
+        </div>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="field">
+        <label>
+          رقم الهاتف
+          <span class="required text-danger" *ngIf="isRequired('phoneNumber')"
+            >*</span
+          >
+        </label>
+        <input type="text" formControlName="phoneNumber" maxlength="11" />
+      </div>
+
+      <!-- Insurance Number -->
+      <div class="field">
+        <label>
+          مبلغ التأمين
+          <span class="required text-danger" *ngIf="isRequired('Insurence')"
+            >*</span
+          >
+        </label>
+        <input type="text" formControlName="Insurence" />
+      </div>
+
+      <!-- Employee Type -->
+      <div class="field">
+        <label>
+          حالة الموظف
+          <span class="required text-danger" *ngIf="isRequired('EmployeeType')"
+            >*</span
+          >
+        </label>
+
+        <select formControlName="EmployeeType">
+          <option value="">اختر حالة الموظف</option>
+          <option value="تحت التدريب">تحت التدريب</option>
+          <option value="تم التعيين">تم التعيين</option>
+        </select>
+      </div>
+
+      <!-- Holiday Number -->
+      <div class="field">
+        <label>
+          عدد أيام الإجازات
+          <span class="required text-danger" *ngIf="isRequired('Holidaies')"
+            >*</span
+          >
+        </label>
+        <input type="number" formControlName="Holidaies" />
+      </div>
+
+      <!-- Total Salary -->
+      <div class="field" *ngIf="form.get('role')?.value === 'static'">
+        <label> الراتب الإجمالي </label>
+        <input type="number" formControlName="totalSalary" />
+      </div>
+
+      <!-- Salary Per Hour -->
+      <div
+        class="field"
+        *ngIf="
+    form.get('role')?.value === 'changable' ||
+    form.get('role')?.value === 'delivery'
+  "
+      >
+        <label>الراتب بالساعة</label>
+        <input type="number" formControlName="salaryPerHour" />
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="form">
+      <button
+        type="submit"
+        [disabled]="loading || form.invalid"
+        class="submit-btn full my-2"
+      >
+        {{ loading ? (employeeData ? 'جارى التعديل...' : 'جارى التسجيل...') :
+        (employeeData ? 'تعديل' : 'تسجيل') }}
+      </button>
+    </div>
+  </form>
+</div>

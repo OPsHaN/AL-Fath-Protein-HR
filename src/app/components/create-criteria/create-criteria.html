@@ -1,0 +1,28 @@
+<div class="panel">
+  <form [formGroup]="form" (ngSubmit)="Submit()" class="form">
+
+    <!-- Branch Name -->
+    <div class="field">
+      <label>
+        اسم البند
+        <span class="required text-danger">*</span>
+      </label>
+
+      <input
+        type="text"
+        formControlName="Name"
+        placeholder="أدخل اسم البند"
+      />
+    </div>
+
+    <!-- Submit -->
+    <button
+      type="submit"
+      [disabled]="loading || form.invalid"
+      class="submit-btn full"
+    >
+      {{ loading ? 'جارى الحفظ...' : 'حفظ' }}
+    </button>
+
+  </form>
+</div>

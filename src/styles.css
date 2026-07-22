@@ -1,0 +1,900 @@
+:root {
+  color-scheme: light;
+  font-family: 'Beiruti', sans-serif;
+  font-size: 25px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: 'Beiruti', sans-serif;
+  font-size: 20px;
+  height: 100%;
+  margin: 0;
+}
+
+.pi {
+  font-size: 20px !important;
+
+}
+
+body {
+  /* background: #dfe7f4; */
+  background:
+    url("/photos/bg.png") no-repeat center center;
+  background-size: cover;
+  background-position: center;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.btn-sm {
+  font-size: 20px !important;
+}
+
+.p-toast .p-toast-message-content {
+  direction: rtl;
+  text-align: right;
+}
+
+.p-toast .p-toast-summary,
+.p-toast .p-toast-detail {
+  text-align: right;
+}
+
+.p-toast .p-toast-message {
+  background: rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+}
+
+.p-toast .p-toast-message.p-toast-message-success {
+  background: #e8f7ee !important;
+  border-color: #2e7d32 !important;
+}
+
+.p-toast .p-toast-message.p-toast-message-error {
+  background: #fdecea !important;
+  border-color: #d32f2f !important;
+}
+
+.p-toast .p-toast-message.p-toast-message-warn {
+  background: #fff8e1 !important;
+  border-color: #f9a825 !important;
+}
+
+.p-toast .p-toast-message.p-toast-message-info {
+  background: #eaf3ff !important;
+  border-color: #1976d2 !important;
+}
+
+.p-datatable-tbody>tr>td {
+  padding: 0.1rem !important;
+}
+
+.p-paginator {
+  padding: 3px !important;
+    font-size: 20px;
+
+}
+
+.p-select-label {
+  padding: 0.3rem 0.5rem !important;
+  border-radius: 50px;
+}
+
+.p-paginator .p-select {
+    border-radius: 50px;
+}
+
+.p-paginator-rpp-dropdown .p-select-label {
+  font-size: 20px;
+}
+
+
+
+
+/* 🎯 Table Wrapper */
+.p-datatable {
+  background: var(--surface);
+  border: 0px solid var(--surface-border);
+  /* border-radius: 16px; */
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+}
+
+.p-datatable .p-datatable-thead>tr>th {
+  background: var(--surface-strong);
+  border-bottom: 2px solid var(--surface-border);
+  text-align: center;
+  font-weight: 600;
+  padding: 10px;
+  background-color: var(--accent) !important;
+  color: #fff !important;
+  /* border:1px solid var(--surface); */
+}
+
+.p-datatable .p-datatable-tbody>tr {
+  background: transparent;
+  transition: 0.2s ease;
+  color: var(--text);
+  text-align: center;
+}
+
+.p-datatable .p-datatable-tbody>tr>td {
+  text-align: center;
+
+}
+
+/* ✨ hover احترافي */
+.p-datatable .p-datatable-tbody>tr:hover>td {
+  background: var(--hover);
+  color: var(--text);
+
+}
+
+/* ✨ left accent line */
+.p-datatable .p-datatable-tbody>tr:hover {
+  box-shadow: inset 3px 0 0 var(--hover);
+}
+
+.p-cell-editor .p-inputtext {
+  background: var(--surface-strong);
+  border: 1px solid var(--surface-border);
+  /* border-radius: 12px; */
+}
+
+.custom-input {
+  padding: 5px 5px;
+  border: 2px solid var(--surface-border);
+  border-radius: 18px;
+  color: var(--text);
+  outline: none;
+  transition: 0.2s ease;
+  /* font-size: 20px; */
+  background: var(--surface-strong);
+}
+
+.custom-input option {
+  color: var(--text);
+  padding: 10px;
+  background: var(--surface-strong);
+}
+
+.custom-input select {
+  color: var(--text);
+  background: var(--surface-strong);
+}
+
+.p-tag  {
+  font-size: 18px !important;
+}
+
+
+.p-paginator {
+  background: var(--surface) !important;
+  border-bottom: 0px solid var(--surface-border);
+  backdrop-filter: blur(10px);
+}
+
+.p-paginator .p-paginator-page.p-highlight {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
+
+.p-paginator .p-paginator-page:not(.p-highlight):hover {
+  background: rgba(49, 120, 246, 0.15);
+  color: var(--accent);
+}
+
+.p-paginator-page.p-paginator-page-selected {
+  background-color: var(--accent) !important;
+  color: #fff !important;
+  border-radius: 50px;
+}
+
+.p-select-option.p-select-option-selected.p-focus {
+  background: var(--accent);
+  color: var(--text);
+}
+
+.p-paginator .p-paginator-next,
+.p-paginator .p-paginator-prev {
+  color: var(--text);
+}
+
+.p-paginator .p-paginator-next:hover,
+.p-paginator .p-paginator-prev:hover {
+  background: rgba(49, 120, 246, 0.15);
+}
+
+
+
+.p-select-dropdown,
+.p-select-label {
+  width: auto !important;
+}
+
+.p-dialog {
+  border: 0.1rem solid var(--surface-border) !important;
+  background: var(--surface) !important;
+  color: var(--text) !important;
+}
+
+.p-dialog-header {
+  flex-direction: row-reverse !important;
+  background: var(--surface-strong) !important;
+  color: var(--text) !important;
+  border-bottom: 0.1rem solid var(--surface-border) !important;
+  border-radius: 0.5rem 0.5rem 0 0 !important;
+}
+
+.p-icon {
+  color: var(--text-soft) !important;
+}
+
+.p-dialog-content {
+  padding: 1rem !important;
+  background: var(--surface-strong) !important;
+  color: var(--text);
+  border-radius: 0 0 0.5rem 0.5rem !important;
+}
+
+.p-tab {
+  background: var(--surface-strong) !important;
+  color: var(--text) !important;
+  border: 0.1rem solid var(--surface-border) !important;
+  border-radius: 0.5rem 0.5rem 0 0 !important;
+  padding: 0.5rem 0.5rem !important;
+}
+
+.p-tab-active {
+  background: var(--accent) !important;
+  color: #fff !important;
+  border: 0.1rem solid var(--surface-border) !important;
+  border-radius: 0.5rem 0.5rem 0 0 !important;
+}
+
+.p-tablist {
+  background: var(--surface-strong) !important;
+  color: var(--text) !important;
+}
+
+.p-tabpanels {
+  background: var(--surface) !important;
+  border: 0.1rem solid var(--surface-border) !important;
+  border-radius: 0.5rem 0 0.5rem 0.5rem !important;
+  padding: 0.5rem !important;
+  color: var(--text) !important;
+}
+
+
+
+.p-message-text {
+  font-size: 20px !important;
+}
+
+
+
+/* ============================================
+   p-multiselect - التصميم الكامل
+   ============================================ */
+
+/* الصندوق الأساسي (المغلق) */
+.p-multiselect {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 18px;
+  color: var(--text);
+  transition: 0.2s ease;
+  box-shadow: none;
+}
+
+.p-multiselect:hover {
+  border-color: var(--primary-color, #6366f1);
+}
+
+.p-multiselect.p-focus {
+  border-color: var(--primary-color, #6366f1);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+}
+
+/* النص/اللابل داخل الصندوق */
+.p-multiselect-label {
+  color: var(--text);
+  font-size: 16px;
+  padding: 0.65rem 1rem;
+}
+
+.p-multiselect-label.p-placeholder {
+  color: var(--text-muted, #9ca3af);
+}
+
+/* أيقونة السهم */
+.p-multiselect-trigger {
+  color: var(--text);
+  width: 2.5rem;
+}
+
+.p-multiselect-trigger-icon {
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   الـ Chips (لو display="chip")
+   ============================================ */
+.p-multiselect-chip {
+  background: var(--primary-color, #6366f1);
+  color: var(--accent);
+  border-radius: 12px;
+  font-size: 13px;
+  padding: 0.2rem 0.6rem;
+  margin: 0.15rem;
+}
+
+.p-multiselect-chip .p-multiselect-chip-icon {
+  color: var(--accent);
+  margin-right: 0.4rem;
+}
+
+.p-multiselect-chip-item.p-focus {
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+  border-radius: 12px;
+}
+
+/* ============================================
+   Panel (القائمة المنسدلة - appendTo body)
+   ============================================ */
+.p-multiselect-overlay {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--surface-border) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+  z-index: 10000 !important;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+/* الهيدر (لو فيه search/select all) */
+.p-multiselect-header {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border-bottom: 1px solid var(--surface-border) !important;
+  padding: 0.6rem 0.8rem !important;
+}
+
+.p-multiselect-filter-container input {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--surface-border) !important;
+  border-radius: 10px !important;
+  padding: 0.4rem 0.8rem !important;
+}
+
+/* جسم القائمة */
+.p-multiselect-list-container {
+  background: var(--surface) !important;
+  padding: 0.3rem;
+  max-height: 250px;
+}
+
+.p-multiselect-list {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* كل عنصر/خيار */
+.p-multiselect-option {
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border-radius: 10px !important;
+  padding: 0.6rem 0.8rem !important;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.p-multiselect-option:hover {
+  background: var(--surface-hover, rgba(99, 102, 241, 0.08)) !important;
+}
+
+.p-multiselect-option.p-multiselect-option-selected {
+  background: rgba(99, 102, 241, 0.12) !important;
+  color: var(--primary-color) !important;
+  font-weight: 600;
+}
+
+.p-multiselect-option.p-focus {
+  background: var(--surface-hover, rgba(99, 102, 241, 0.08)) !important;
+}
+
+/* ============================================
+   Checkbox داخل كل Option
+   ============================================ */
+.p-multiselect-option .p-checkbox {
+  width: 30px !important;
+  height: 20px !important;
+  flex-shrink: 0;
+}
+
+.p-multiselect-option .p-checkbox-box {
+  width: 30px !important;
+  height: 25px !important;
+  border: 2px solid var(--text) !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+}
+
+.p-multiselect-option .p-checkbox-box.p-highlight {
+  background: var(--primary-color, #6366f1) !important;
+  border-color: var(--primary-color, #6366f1) !important;
+}
+
+.p-multiselect-option .p-checkbox-icon {
+  color: var(--accent) !important;
+  font-size: 12px !important;
+}
+
+/* ============================================
+   رسالة "مفيش نتائج"
+   ============================================ */
+.p-multiselect-empty-message {
+  color: var(--text-muted, #9ca3af) !important;
+  text-align: center;
+  padding: 1rem !important;
+}
+
+/* ============================================
+   Scrollbar للقائمة (اختياري - تجميلي)
+   ============================================ */
+.p-multiselect-list-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.p-multiselect-list-container::-webkit-scrollbar-thumb {
+  background: var(--surface-border);
+  border-radius: 10px;
+}
+
+.p-multiselect-list-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+
+.panel {
+  display: grid;
+  align-content: start;
+  gap: 18px;
+  /* height: 100%; */
+  padding: 10px;
+}
+
+.panel h3,
+.panel p {
+  margin: 0;
+}
+
+.panel p {
+  color: var(--text-soft);
+  max-width: 52ch;
+}
+
+.p-datepicker-input {
+  padding: 0.2rem;
+  width: 100%;
+}
+
+.p-select-filter {
+  padding: 0.2rem;
+  width: 100%;
+}
+
+/* 🔥 form container بنفس list */
+.form {
+  display: grid;
+  gap: 10px;
+}
+
+/* 🔥 نفس شكل list__item */
+.form input,
+.form select {
+  padding: 10px 10px;
+  border: 1px solid var(--surface-border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  outline: none;
+  font-size: 20px;
+  transition: 0.2s ease;
+}
+
+/* focus زي modern glass UI */
+.form input:focus,
+.form select:focus {
+  border-color: #1677ff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* 🔥 button بنفس النظام */
+.form button {
+  /* padding: 10px; */
+  height: 50px;
+  border: 1px solid var(--surface-border);
+  border-radius: 18px;
+  background: rgba(22, 119, 255, 0.2);
+  color: var(--text);
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.form button:hover {
+  background: rgba(22, 119, 255, 0.35);
+}
+
+.form select option {
+  background: var(--surface);
+}
+
+.form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submit-btn {
+  width: auto;
+  margin: auto;
+
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.field label {
+  color: var(--text-soft);
+  padding-inline-start: 6px;
+}
+
+
+.password-field .input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-field input {
+  width: 100%;
+  padding-inline-end: 40px;
+  /* مساحة للأيقونة */
+}
+
+/* أيقونة العين */
+.password-field i {
+  position: absolute;
+  left: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--text-soft);
+  transition: 0.2s;
+}
+
+.password-field i:hover {
+  color: #1677ff;
+}
+
+/* grid layout */
+.grid-form {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+/* يخلي العنصر ياخد الصف كله */
+.full {
+  grid-column: span 3;
+}
+
+/* field */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+@media (max-width: 900px) {
+  .grid-form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .full {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-form {
+    grid-template-columns: 1fr;
+  }
+
+  .full {
+    grid-column: span 1;
+  }
+}
+
+.password-rules {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 0;
+  margin: 5px 5px;
+  font-size: 15px;
+}
+
+.password-rules li {
+  color: #999;
+  transition: 0.2s;
+}
+
+.password-rules li.valid {
+  color: #52c41a;
+  /* أخضر */
+}
+
+.p-datepicker-input {
+  width: 100%;
+}
+
+
+.p-confirmdialog {
+  border-radius: 25px !important;
+  overflow: hidden !important;
+  backdrop-filter: blur(14px);
+  background: var(--bg-start) !important;
+  border: 0.1rem solid !important;
+}
+
+/* header */
+.p-confirmdialog .p-dialog-header {
+  background: var(--bg-start) !important;
+  border-bottom: 1px solid !important;
+  color: var(--text) !important;
+  padding: 0.5rem 0.5rem !important;
+}
+
+/* content */
+.p-confirmdialog .p-dialog-content {
+  background: var(--bg-start) !important;
+  color: var(--text) !important;
+  padding: 0.5rem 0.5rem !important;
+}
+
+/* message */
+.p-confirmdialog-message {
+  color: var(--text) !important;
+  line-height: 1.8;
+}
+
+/* footer */
+.p-confirmdialog .p-dialog-footer {
+  background: transparent !important;
+  border-top: 1px solid !important;
+  padding: 0.5rem 0.5rem !important;
+}
+
+/* buttons */
+.p-confirmdialog .p-button {
+  border-radius: 16px !important;
+}
+
+/* cancel button */
+.p-confirmdialog-reject-button {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 1) !important;
+}
+
+/* accept button */
+.p-confirmdialog-accept-button {
+  background: rgba(220, 53, 69, 0.22) !important;
+  border: 1px solid rgba(220, 53, 69, 1) !important;
+
+}
+
+/* icon */
+.p-confirmdialog-icon {
+  color: #f59e0b !important;
+  font-size: 2rem !important;
+}
+
+.p-inputtext {
+  /* padding: 5px 5px !important; */
+  border-radius: 18px !important;
+  background: var(--surface-strong) !important;
+  color: var(--text) !important;
+}
+
+.p-menu {
+  border-radius: 20px !important;
+  box-shadow: #999 0px 8px 24px !important;
+}
+
+.p-menu-list {
+  direction: rtl;
+  background: rgba(222, 221, 221, 0.75);
+  border-radius: 15px;
+  color: inherit;
+  font-size: large;
+  padding: 3px !important;
+}
+
+.p-menu-item-icon {
+  font-size: large;
+  color: var(--text-soft) !important;
+}
+
+.p-menu-item-link {
+  padding: 10px 16px !important;
+}
+
+.p-menu-item-content {
+  border-radius: 15px !important;
+}
+
+.badge {
+  background: rgba(222, 221, 221, 0.75);
+  color: var(--text) !important;
+}
+
+.apply-btn {
+  height: 50px;
+  min-width: 100px;
+  border: none !important;
+  border-radius: 26px !important;
+  background: linear-gradient(135deg,
+      rgba(22, 119, 255, 0.95),
+      rgba(88, 150, 255, 0.9)) !important;
+
+  color: #fff !important;
+
+  font-size: 20px !important;
+  transition: all 0.25s ease;
+  box-shadow:
+    0 8px 20px rgba(22, 119, 255, 0.25);
+}
+
+/* hover */
+.apply-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 24px rgba(22, 119, 255, 0.35);
+
+}
+
+/* icon */
+.apply-btn .pi {
+  font-size: 14px;
+  margin-inline-end: 6px;
+}
+
+
+.download-btn {
+  height: 50px;
+  min-width: 100px;
+  border: none !important;
+  border-radius: 26px !important;
+  background: linear-gradient(135deg,
+      rgba(22, 255, 65, 0.95),
+    ) !important;
+
+  color: #fff !important;
+
+  font-size: 20px !important;
+  transition: all 0.25s ease;
+  box-shadow:
+    0 5px 10px rgba(22, 255, 76, 0.35);
+}
+
+/* hover */
+.download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 24px rgba(22, 255, 76, 0.35);
+
+}
+
+/* icon */
+.download-btn .pi {
+  font-size: 14px;
+  margin-inline-end: 6px;
+}
+
+
+.p-message-content {
+  padding: 0.3rem !important;
+}
+
+/*select*/
+
+.select-panel {
+  border-radius: 20px !important;
+  background: var(--surface-strong) !important;
+  font-size: large;
+}
+
+.select-panel .p-select-label {
+  /* font-weight: 600; */
+  color: var(--text) !important;
+  font-size: 20px !important;
+}
+
+
+.p-inputtext {
+    font-size: 20px !important;
+
+}
+
+.select-panel .p-select-option {
+  color: var(--text) !important;
+  background: var(--surface) !important;
+}
+
+.select-overlay {
+  border-radius: 20px !important;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid var(--surface-border);
+
+}
+
+.select-overlay .p-select-option {
+  padding: 0.5rem !important;
+  font-weight: 500;
+  background: var(--surface-strong) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--surface-border);
+
+}
+
+.select-overlay .p-select-option:hover {
+  background: rgba(22, 119, 255, 0.35) !important;
+
+}
+
+.select-overlay .p-select-option-selected {
+  background: rgba(22, 119, 255, 0.35) !important;
+  color: var(--text-soft) !important;
+  font-weight: 600;
+}
+
+.select-overlay .select-list-container {
+  background: var(--surface-strong) !important;
+  padding: 0px !important;
+}
+
+.select-overlay .p-select-header {
+  padding: 0.3rem;
+  background: var(--surface-strong) !important;
+
+}
+
+.p-tablist-tab-list {
+  gap: 3px !important;
+}

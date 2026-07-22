@@ -1,0 +1,111 @@
+<div class="sticky-header">
+  <button
+    *ngIf="!showCreateBranch && !showEditBranch"
+    pButton
+    type="button"
+    class="btn btn-sm mx-1 my-1 d-flex align-items-center justify-content-center gap-2"
+    [class.btn-success]="true"
+    (click)="showCreateBranch = true"
+  >
+    <i class="pi pi-sitemap"></i>
+    فرع جديد
+  </button>
+
+  <button
+    *ngIf="showCreateBranch || showEditBranch"
+    pButton
+    type="button"
+    class="btn btn-sm mx-1 my-1 d-flex align-items-center justify-content-center gap-2"
+    [class.btn-danger]="true"
+    (click)="closeBranchForm()"
+  >
+    <i class="pi pi-times"></i>
+  </button>
+</div>
+
+<!-- CREATE BRANCH -->
+<app-create-branch *ngIf="showCreateBranch" (created)="onBranchCreated()">
+</app-create-branch>
+
+<!-- EDIT BRANCH -->
+<app-create-branch
+  *ngIf="showEditBranch"
+  [mode]="'edit'"
+  [branchToEdit]="selectedBranch"
+  (edited)="onBranchUpdated()"
+>
+</app-create-branch>
+
+<!-- TABLE -->
+<p-table
+  *ngIf="!showCreateBranch && !showEditBranch"
+  [value]="Branches"
+  [paginator]="true"
+  [rows]="pageSize"
+  [rowsPerPageOptions]="[5,10,20 ,50]"
+  [loading]="loading"
+  [totalRecords]="totalRecords"
+  [lazy]="true"
+  (onPage)="onPageChange($event)"
+  [responsiveLayout]="'scroll'"
+  [paginatorDropdownAppendTo]="'body'"
+  dataKey="id"
+  dir="rtl"
+  styleClass="p-datatable-sm p-datatable-gridlines"
+>
+  <!-- HEADER -->
+  <ng-template pTemplate="header">
+    <tr>
+      <th>#</th>
+      <th>اسم الفرع</th>
+      <th>إجمالي الموظفين</th>
+      <th>إجمالي المرتبات</th>
+      <th>إجمالي الساعات</th>
+      <th *ngIf="this.auth.isAdmin">الإجراءات</th>
+    </tr>
+  </ng-template>
+
+  <!-- BODY -->
+  <ng-template pTemplate="body" let-branch let-ri="rowIndex">
+    <tr>
+      <!-- Row Number -->
+      <td>{{ branch.id }}</td>
+      <!-- Branch Name -->
+      <td>{{ branch.name }}</td>
+      <td>{{ branch.targetNumberOfEmployees ?? '—' }}</td>
+      <td>{{ branch.targetSalaries ?? '—' }}</td>
+      <td>{{ branch.targetHours ?? '—' }}</td>
+      <!-- Actions -->
+      <td *ngIf="this.auth.isAdmin">
+        <!-- Edit -->
+        <button
+          pButton
+          type="button"
+          class="btn btn-sm btn-success mx-1 my-1 rounded-circle"
+          (click)="editBranch(branch)"
+        >
+          <i
+            class="pi pi-pencil d-flex align-items-center justify-content-center"
+          ></i>
+        </button>
+
+        <!-- Delete -->
+        <button
+          pButton
+          type="button"
+          class="btn btn-sm btn-danger mx-1 my-1 rounded-circle"
+          (click)="confirmDelete(branch)"
+        >
+          <i
+            class="pi pi-trash d-flex align-items-center justify-content-center"
+          ></i>
+        </button>
+      </td>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="6" class="text-center py-4">لاتوجد أى بيانات</td>
+    </tr>
+  </ng-template>
+</p-table>

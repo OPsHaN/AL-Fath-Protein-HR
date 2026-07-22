@@ -1,0 +1,45 @@
+<div class="panel">
+  <div class="form">
+    <div class="field">
+      <label>تاريخ الشيفت <span class="text-danger">*</span></label>
+      <p-datepicker
+        [(ngModel)]="form.shiftDate"
+        dateFormat="yy-mm-dd"
+        placeholder="اختر تاريخ"
+        [appendTo]="'body'"
+        [minDate]="yesterday"
+        [maxDate]="today"
+        [pt]="{ pcInputText: { root: { style: 'padding: 0.3rem' } } }"
+      />
+    </div>
+
+    <div class="field">
+      <label>السبب <span class="text-danger">*</span></label>
+      <select class="custom-input toolbar-select" [(ngModel)]="form.reason">
+        <option value="سهو البصمة">سهو بصمة</option>
+        <option value="انقطاع التيار الكهربي">انقطاع اليتار الكهربائى</option>
+        <option value="انقطاع الانترنت">انقطاع خدمة الانترنت</option>
+        <option value="أخرى">اخرى</option>
+      </select>
+    </div>
+
+    <!-- <div class="field">
+      <label>ملاحظات</label>
+      <textarea
+        class="custom-input"
+        [(ngModel)]="form.notes"
+        rows="3"
+        placeholder="أي تفاصيل إضافية..."
+      ></textarea>
+    </div> -->
+
+    <button
+      type="button"
+      class="submit-btn full"
+      [disabled]="loading || !form.reason || !form.shiftDate"
+      (click)="submit()"
+    >
+      {{ loading ? 'جارى الإرسال...' : 'إرسال الطلب' }}
+    </button>
+  </div>
+</div>
