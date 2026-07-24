@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "nour-hr-system": {
+    "al-fath-protein-hr-system": {
       "projectType": "application",
       "schematics": {},
       "root": "",

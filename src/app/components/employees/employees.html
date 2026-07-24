@@ -450,13 +450,23 @@
                   class="custom-input"
                   [(ngModel)]="employeeDetails.theNameOfJob"
                 >
-                  <option value="">اختر المسمى الوظيفي</option>
-                  <option value="مدير">مدير</option>
-                  <option value="صيدلي">صيدلي</option>
-                  <option value="مساعد صيدلي">مساعد صيدلي</option>
-                  <option value="دليفري">دليفري</option>
-                  <option value="خدمات">خدمات</option>
-                  <option value="إدارة">إدارة</option>
+          <option value="">اختر المسمى الوظيفي</option>
+          <option value="شيف تلاجة">شيف تلاجة</option>
+          <option value="مساعد شيف تلاجة">مساعد شيف تلاجة</option>
+          <option value="شيف معمل">شيف معمل</option>
+          <option value="مساعد شيف معمل">مساعد شيف معمل</option>
+          <option value="شيف منتجات البان">شيف منتجات البان</option>
+          <option value="مساعد شيف منتجات البان">مساعد شيف منتجات البان</option>
+          <option value="منسق صالة">منسق صالة</option>
+          <option value="مندوب تذوق">مندوب تذوق</option>
+          <option value="عمال انتاج">عمال انتاج</option>
+          <option value="كاشير">كاشير</option>
+          <option value="كول سنتر">كول سنتر</option>
+          <option value="مدير فرع">مدير فرع</option>
+          <option value="مدير حسابات">مدير حسابات</option>
+          <option value="حسابات">حسابات</option>
+          <option value="مدير تشغيل">مدير تشغيل</option>
+          <option value="موارد بشرية">موارد بشرية</option>
                 </select>
                 <span *ngIf="!isEditMode"
                   >{{ employeeDetails.theNameOfJob || '-' }}</span
@@ -1125,7 +1135,7 @@
           >
             <div class="details-grid mb-2">
               <div class="detail-item">
-                <label>الربع</label><span>{{ evaluation.quarter }}</span>
+                <label>الشهر</label><span>{{ evaluation.quarter }}</span>
               </div>
               <div class="detail-item">
                 <label>السنة</label><span>{{ evaluation.year }}</span>
@@ -1458,10 +1468,10 @@
     <!-- Header -->
     <div class="evaluation-header mb-1">
       <div class="field">
-        <label>الربع</label>
+        <label>الشهر</label>
         <select class="custom-input" [(ngModel)]="actionForm.quarter">
-          <option *ngFor="let quarter of quarters" [value]="quarter.value">
-            {{ quarter.label }}
+          <option *ngFor="let month of months" [value]="month.value">
+            {{ month.label }}
           </option>
         </select>
       </div>
@@ -1838,7 +1848,7 @@
       <select class="custom-input" [(ngModel)]="groupActionType">
         <option value="bonus">زيادة</option>
         <option value="discount">خصم</option>
-        <option value="contractDiscount">خصم تعاقدات</option>
+        <!-- <option value="contractDiscount">خصم تعاقدات</option> -->
       </select>
     </div>
 

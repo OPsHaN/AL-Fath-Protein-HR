@@ -74,12 +74,20 @@ export class Employees {
   actionDialogVisible = false;
   currentActionType = "";
   currentActionTitle = "";
-  quarters: any[] = [
-    { value: "Q1", label: "الربع الأول" },
-    { value: "Q2", label: "الربع الثاني" },
-    { value: "Q3", label: "الربع الثالث" },
-    { value: "Q4", label: "الربع الرابع" },
-  ];
+months: any[] = [
+  { value: 1, label: "يناير" },
+  { value: 2, label: "فبراير" },
+  { value: 3, label: "مارس" },
+  { value: 4, label: "أبريل" },
+  { value: 5, label: "مايو" },
+  { value: 6, label: "يونيو" },
+  { value: 7, label: "يوليو" },
+  { value: 8, label: "أغسطس" },
+  { value: 9, label: "سبتمبر" },
+  { value: 10, label: "أكتوبر" },
+  { value: 11, label: "نوفمبر" },
+  { value: 12, label: "ديسمبر" },
+];
   actionItems: any[] = [];
   actionForm: any = {};
   actionLoading = false;
