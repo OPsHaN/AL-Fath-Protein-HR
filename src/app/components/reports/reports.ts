@@ -91,11 +91,13 @@ export interface MonthlyPayrollRecord {
   hoursOverTime: number;
   forgetedHours: number;
   holidayHours: number;
+  salaryPerHour: number;
   totalSalary: number;
   totalDiscounts: number;
   totalContractDiscount: number;
   totalBouns: number;
   totalBorrows: number;
+  totalInstallmentBorrow: number;
   totalCashBorrows: number;
   netSalary: number;
   bankName?: string;
@@ -216,7 +218,6 @@ export class Reports implements OnInit {
       this.auth.isAdmin ||
       this.auth.isHR ||
       this.auth.isControl ||
-      this.auth.isCEO ||
       this.auth.isAreaManager
     ) {
       this.loadAllShifts();
@@ -228,6 +229,12 @@ export class Reports implements OnInit {
       this.loadMonthlyPayroll();
       this.loadBranches();
       this.activeTabIndex = 4;
+    } else if (this.auth.isCEO) {
+      this.loadAllShifts();
+      this.loadEmployees();
+      this.loadBranches();
+      this.loadMonthlyPayroll();
+      this.activeTabIndex = 0;
     }
   }
 
@@ -256,6 +263,10 @@ export class Reports implements OnInit {
 
   get isControl(): boolean {
     return localStorage.getItem("role") === "Control";
+  }
+
+  get isCEO(): boolean {
+    return localStorage.getItem("role") === "CEO";
   }
 
   // ── Page Change Handlers ─────────────────────────────────────────────────
@@ -505,7 +516,7 @@ export class Reports implements OnInit {
       });
   }
 
-loadBranches(): void {
+  loadBranches(): void {
     this.api.getAllBranches(1, 999).subscribe({
       next: (res: any) => {
         this.branches = res.data ?? res ?? [];
@@ -529,15 +540,12 @@ loadBranches(): void {
         this.api.showError("فشل تحميل البيانات");
       },
     });
-}
-
-  
+  }
 
   get branchIds(): string[] {
     const raw = localStorage.getItem("branchId"); // نفس نمط "role"
     return raw ? raw.split(",").map((id: string) => id.trim()) : [];
   }
-
 
   loadEmployees() {
     const branchIds = this.branchIds;
@@ -589,8 +597,7 @@ loadBranches(): void {
         this.loading = false;
       },
     });
-}
-  
+  }
 
   // ── Helpers ──────────────────────────────────────────────────────────────
 
@@ -951,7 +958,7 @@ loadBranches(): void {
     });
   }
 
-  // ===== Tab 5 - الرواتب الشهرية =====
+// ===== Tab 5 - الرواتب الشهرية =====
   exportMonthlyPayrollToExcel(): void {
     const pageSize = 100;
     const totalPages = Math.ceil(this.monthlyPayrollTotalCount / pageSize);
@@ -974,24 +981,27 @@ loadBranches(): void {
           .flatMap((res) => res.data ?? res)
           .map((x: MonthlyPayrollRecord) => ({
             "كود الموظف": x.employeeId,
-            "اسم الموظف": x.employeeName,
+            الموظف: x.employeeName,
             الفرع: x.branchName,
             "شهر / سنة": `${x.month}/${x.year}`,
-            التأمينات: x.insurence,
-            "ساعات العمل": x.hours,
-            "الأوفر تايم": x.hoursOverTime,
-            "ساعات النسيان": x.forgetedHours,
-            "ساعات الإجازات": x.holidayHours,
-            "إجمالي الساعات": x.target,
-            "إجمالي المرتب": x.totalSalary,
-            الخصومات: x.totalDiscounts,
-            "خصومات التعاقد": x.totalContractDiscount,
-            المكافآت: x.totalBouns,
-            السلف: x.totalBorrows,
-            "السلف النقدية": x.totalCashBorrows,
-            "صافي المرتب": x.netSalary,
-            البنك: x.bankName ?? "",
-            "رقم الحساب": x.bankAccount ?? "",
+            التأمينات: x.insurence ?? 0,
+            "ساعات العمل": x.hours ?? 0,
+            "الأوفر تايم": x.hoursOverTime ?? 0,
+            "ساعات النسيان": x.forgetedHours ?? 0,
+            "ساعات الإجازات": x.holidayHours ?? 0,
+            "إجمالي الساعات": this.getTotalHours(x),
+            التارجت: x.target ?? 0,
+            "سعر الساعة": x.salaryPerHour ?? 0,
+            "إجمالى الراتب": x.totalSalary ?? 0,
+            الخصومات: x.totalDiscounts ?? 0,
+            "خصومات التعاقدات": x.totalContractDiscount ?? 0,
+            البونص: x.totalBouns ?? 0,
+            السلف: x.totalBorrows ?? 0,
+            "السلف المرحلة": x.totalInstallmentBorrow ?? 0,
+            "السلف النقدية": x.totalCashBorrows ?? 0,
+            "صافي الراتب": x.netSalary ?? 0,
+            البنك: x.bankName ?? "—",
+            "رقم الحساب": x.bankAccount ?? "—",
           }));
 
         this.exportToExcel(excelData, "الرواتب الشهرية");
@@ -1037,24 +1047,27 @@ loadBranches(): void {
           .flatMap((res) => res.data ?? res)
           .map((x: MonthlyPayrollRecord) => ({
             "كود الموظف": x.employeeId,
-            "اسم الموظف": x.employeeName,
+            الموظف: x.employeeName,
             الفرع: x.branchName,
             "شهر / سنة": `${x.month}/${x.year}`,
-            التأمينات: x.insurence,
-            "ساعات العمل": x.hours,
-            "الأوفر تايم": x.hoursOverTime,
-            "ساعات النسيان": x.forgetedHours,
-            "ساعات الإجازات": x.holidayHours,
-            "إجمالي الساعات": x.target,
-            "إجمالي المرتب": x.totalSalary,
-            الخصومات: x.totalDiscounts,
-            "خصومات التعاقد": x.totalContractDiscount,
-            المكافآت: x.totalBouns,
-            السلف: x.totalBorrows,
-            "السلف النقدية": x.totalCashBorrows,
-            "صافي المرتب": x.netSalary,
-            البنك: x.bankName ?? "",
-            "رقم الحساب": x.bankAccount ?? "",
+            التأمينات: x.insurence ?? 0,
+            "ساعات العمل": x.hours ?? 0,
+            "الأوفر تايم": x.hoursOverTime ?? 0,
+            "ساعات النسيان": x.forgetedHours ?? 0,
+            "ساعات الإجازات": x.holidayHours ?? 0,
+            "إجمالي الساعات": this.getTotalHours(x),
+            التارجت: x.target ?? 0,
+            "سعر الساعة": x.salaryPerHour ?? 0,
+            "إجمالى الراتب": x.totalSalary ?? 0,
+            الخصومات: x.totalDiscounts ?? 0,
+            "خصومات التعاقدات": x.totalContractDiscount ?? 0,
+            البونص: x.totalBouns ?? 0,
+            السلف: x.totalBorrows ?? 0,
+            "السلف المرحلة": x.totalInstallmentBorrow ?? 0,
+            "السلف النقدية": x.totalCashBorrows ?? 0,
+            "صافي الراتب": x.netSalary ?? 0,
+            البنك: x.bankName ?? "—",
+            "رقم الحساب": x.bankAccount ?? "—",
           }));
 
         this.exportToExcel(excelData, "رواتب الفرع");

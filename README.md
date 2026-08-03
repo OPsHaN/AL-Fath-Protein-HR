@@ -1,2 +1,2 @@
-# AL-Fath-HR-System
-AL-Fath-HR-System
+# Nour-HR-System
+Nour-HR-System

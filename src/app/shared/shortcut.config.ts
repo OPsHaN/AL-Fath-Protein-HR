@@ -156,7 +156,9 @@ export const SHORTCUTS_CONFIG = {
     title: "الإعلانات",
     icon: "campaign",
     bg: "#f59e0b",
-    roles: [] as UserRole[],
+    roles: [
+
+    ] as UserRole[],
     startup: true,
     size: { width: 650, height: 300 },
   },

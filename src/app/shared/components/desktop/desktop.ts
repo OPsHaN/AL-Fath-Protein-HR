@@ -83,6 +83,14 @@ export class Desktop implements OnInit, OnDestroy {
     return localStorage.getItem("role") === "Admin";
   }
 
+  get isCEO(): boolean {
+    return localStorage.getItem("role") === "CEO";
+  }
+
+  get isAccountant(): boolean {
+    return localStorage.getItem("role") === "Accountant";
+  }
+
   private get storageKey(): string {
     const employeeId = localStorage.getItem("employeeId") ?? "default";
     return `activeShift_${employeeId}`;
@@ -161,7 +169,6 @@ export class Desktop implements OnInit, OnDestroy {
 
         this.cdr.detectChanges();
 
-        console.log(this.managerBranches);
       },
       error: () => {
         this.loading = false;
@@ -306,7 +313,7 @@ export class Desktop implements OnInit, OnDestroy {
   protected openWebsiteWindow(): void {
     this.openWindow({
       action: "website",
-      title: "أوبشن لتطوير البرمجيات",
+      title: "أوبشن لتطوير البرمجيات و التسويق الرقمي",
       icon: "language",
     });
   }
@@ -319,7 +326,7 @@ export class Desktop implements OnInit, OnDestroy {
       width?: number;
       height?: number;
       active?: boolean;
-      hideControls?: boolean
+      hideControls?: boolean;
     },
   ): void {
     const size = this.defaultSize(shortcut.action);

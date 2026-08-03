@@ -1,9 +1,9 @@
 import {
+  Button
+} from "./chunk-ZIMT7D2E.js";
+import {
   zindexutils
 } from "./chunk-PSJOJ324.js";
-import {
-  Button
-} from "./chunk-XRPVNXJR.js";
 import {
   DomHandler,
   blockBodyScroll,
@@ -19,16 +19,24 @@ import {
   PARENT_INSTANCE
 } from "./chunk-MDU26JFA.js";
 import {
+  Bind
+} from "./chunk-PTLVBNX5.js";
+import {
   BaseStyle
 } from "./chunk-YN36FFF2.js";
+import {
+  animate,
+  animation,
+  style,
+  transition,
+  trigger,
+  useAnimation
+} from "./chunk-42VGZS34.js";
 import {
   PrimeTemplate,
   SharedModule,
   TranslationKeys
 } from "./chunk-5DMWIRBC.js";
-import {
-  Bind
-} from "./chunk-PTLVBNX5.js";
 import {
   C,
   Lt,
@@ -44,14 +52,6 @@ import {
   v,
   vt
 } from "./chunk-TIK557PQ.js";
-import {
-  animate,
-  animation,
-  style,
-  transition,
-  trigger,
-  useAnimation
-} from "./chunk-42VGZS34.js";
 import {
   CommonModule,
   NgClass,
@@ -2092,4 +2092,4 @@ export {
   Dialog,
   DialogModule
 };
-//# sourceMappingURL=chunk-DTQDJ6T2.js.map
+//# sourceMappingURL=chunk-7CQ4W3II.js.map

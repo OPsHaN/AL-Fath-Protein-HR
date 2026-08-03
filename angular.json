@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "al-fath-protein-hr-system": {
+    "nour-hr-system": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/al-fath-protein-hr-system",
+            "outputPath": "dist/nour-hr-system",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -66,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "al-fath-protein-hr-system:build:production"
+              "buildTarget": "nour-hr-system:build:production"
             },
             "development": {
-              "buildTarget": "al-fath-protein-hr-system:build:development"
+              "buildTarget": "nour-hr-system:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -3,7 +3,7 @@
     <p-tabs [(value)]="activeTabIndex">
       <p-tablist>
         <p-tab value="0">بيانات الموظف</p-tab>
-        <!-- <p-tab value="1">بيانات المرتب</p-tab> -->
+        <p-tab value="1">بيانات المرتب</p-tab>
         <p-tab value="2" *ngIf="employeeDetails?.evaluations?.length"
           >التقييمات</p-tab
         >
@@ -293,7 +293,7 @@
               class="detail-item full-width mb-3"
               *ngIf="employeeDetails?.contractDiscounts?.length"
             >
-              <h6 class="section-title text-warning">مرتب شيفت فرع آخر</h6>
+              <h6 class="section-title text-warning">خصومات التعاقدات</h6>
               <p-table
                 [value]="employeeDetails.contractDiscounts"
                 styleClass="p-datatable-sm p-datatable-gridlines"
@@ -303,7 +303,7 @@
                   <tr>
                     <th>القيمة</th>
                     <th>السبب</th>
-                    <th>الفرع</th>
+                    <th>ملاحظات</th>
                     <th>التاريخ</th>
                   </tr>
                 </ng-template>
@@ -398,8 +398,8 @@
                 >
               </div>
               <div class="detail-item">
-                <label>مرتب شيفت فرع آخر</label
-                ><span class="text-success"
+                <label>إجمالى خصومات التعاقدات</label
+                ><span class="text-danger"
                   >{{ employeeDetails.totalContractDiscount }} جنية</span
                 >
               </div>
@@ -425,7 +425,8 @@
               </div>
               <div class="detail-item">
                 <label class="fs-5 text-center">صافى المرتب</label>
-                <span class="fs-6 text-center"
+                <span
+                  class="fs-6 text-center"
                   [class.text-danger]="employeeDetails.netSalary < 0"
                   [class.text-success]="employeeDetails.netSalary >= 0"
                 >
@@ -444,7 +445,7 @@
           >
             <div class="details-grid mb-2">
               <div class="detail-item">
-                <label>الشهر</label><span>{{ evaluation.quarter }}</span>
+                <label>الربع</label><span>{{ evaluation.quarter }}</span>
               </div>
               <div class="detail-item">
                 <label>السنة</label><span>{{ evaluation.year }}</span>
@@ -500,7 +501,11 @@
             [value]="employeeDetails.employeeHistory"
             styleClass="p-datatable-sm p-datatable-gridlines"
             responsiveLayout="scroll"
-          >
+            [paginator]="true"
+            [rows]="10"
+            [rowsPerPageOptions]="[5, 10, 20]"
+            [showCurrentPageReport]="true"
+            >
             <ng-template pTemplate="header">
               <tr>
                 <th>تاريخ البدء</th>
